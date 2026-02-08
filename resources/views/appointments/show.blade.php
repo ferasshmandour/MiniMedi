@@ -45,7 +45,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">{{ trans('messages.reason') }}</label>
-                    <textarea class="form-control" disabled rows="3">{{ $appointment->reason }}</textarea>
+                    <textarea class="form-control" disabled rows="3">{{ $appointment->reason ?? ($appointment->reason_translatable[app()->getLocale()] ?? '') }}</textarea>
                 </div>
             </x-card>
         </div>
@@ -83,20 +83,20 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label class="form-label">{{ trans('messages.diagnosis') }}</label>
-                        <textarea class="form-control" disabled rows="3">{{ $appointment->medicalNote->diagnosis }}</textarea>
+                        <textarea class="form-control" disabled rows="3">{{ $appointment->medicalNote->diagnosis ?? ($appointment->medicalNote->diagnosis_translatable[app()->getLocale()] ?? '') }}</textarea>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label class="form-label">{{ trans('messages.prescription') }}</label>
-                        <textarea class="form-control" disabled rows="3">{{ $appointment->medicalNote->prescription }}</textarea>
+                        <textarea class="form-control" disabled rows="3">{{ $appointment->medicalNote->prescription ?? ($appointment->medicalNote->prescription_translatable[app()->getLocale()] ?? '') }}</textarea>
                     </div>
                 </div>
             </div>
             @if ($appointment->medicalNote->treatment_plan)
                 <div class="mb-3">
                     <label class="form-label">{{ trans('messages.treatment_plan') }}</label>
-                    <textarea class="form-control" disabled rows="2">{{ $appointment->medicalNote->treatment_plan }}</textarea>
+                    <textarea class="form-control" disabled rows="2">{{ $appointment->medicalNote->treatment_plan ?? ($appointment->medicalNote->treatment_plan_translatable[app()->getLocale()] ?? '') }}</textarea>
                 </div>
             @endif
         </x-card>

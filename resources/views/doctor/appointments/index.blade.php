@@ -55,7 +55,7 @@
                                     </x-button>
                                     @if ($appointment->status === 'confirmed')
                                         <x-button
-                                            href="{{ route('doctor.medical-notes.create', ['appointment_id' => $appointment->id]) }}"
+                                            href="{{ route('doctor.medical-notes.create', ['appointment' => $appointment->id]) }}"
                                             variant="outline-success" size="sm">
                                             <i class="bi bi-file-medical me-1"></i>{{ trans('messages.add_note') }}
                                         </x-button>
@@ -65,9 +65,6 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
-            <div class="mt-3">
-                {{ $appointments->links() }}
             </div>
         @else
             <div class="empty-state">

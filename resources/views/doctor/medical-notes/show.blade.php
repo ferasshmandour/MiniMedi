@@ -26,22 +26,22 @@
 
         <div class="mb-3">
             <label class="form-label">{{ trans('messages.symptoms') }}</label>
-            <textarea class="form-control" disabled rows="3">{{ $note->symptoms ?? trans('messages.not_recorded') }}</textarea>
+            <textarea class="form-control" disabled rows="3">{{ $note->symptoms ?? ($note->symptoms_translatable[app()->getLocale()] ?? trans('messages.not_recorded')) }}</textarea>
         </div>
 
         <div class="mb-3">
             <label class="form-label">{{ trans('messages.diagnosis') }}</label>
-            <textarea class="form-control" disabled rows="3">{{ $note->diagnosis ?? trans('messages.not_recorded') }}</textarea>
+            <textarea class="form-control" disabled rows="3">{{ $note->diagnosis ?? ($note->diagnosis_translatable[app()->getLocale()] ?? trans('messages.not_recorded')) }}</textarea>
         </div>
 
         <div class="mb-3">
             <label class="form-label">{{ trans('messages.prescription') }}</label>
-            <textarea class="form-control" disabled rows="3">{{ $note->prescription ?? trans('messages.not_recorded') }}</textarea>
+            <textarea class="form-control" disabled rows="3">{{ $note->prescription ?? ($note->prescription_translatable[app()->getLocale()] ?? trans('messages.not_recorded')) }}</textarea>
         </div>
 
         <div class="mb-3">
             <label class="form-label">{{ trans('messages.treatment_plan') }}</label>
-            <textarea class="form-control" disabled rows="3">{{ $note->treatment_plan ?? trans('messages.not_recorded') }}</textarea>
+            <textarea class="form-control" disabled rows="3">{{ $note->treatment_plan ?? ($note->treatment_plan_translatable[app()->getLocale()] ?? trans('messages.not_recorded')) }}</textarea>
         </div>
 
         <div class="mb-3">

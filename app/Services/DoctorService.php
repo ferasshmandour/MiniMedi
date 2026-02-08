@@ -28,22 +28,22 @@ class DoctorService
             'role' => 'doctor',
         ]);
 
-        // Prepare translatable data
+        // Handle translatable fields - they come as arrays from the form
+        $specialization = $data['specialization'] ?? ['en' => '', 'ar' => ''];
+        $department = $data['department'] ?? ['en' => '', 'ar' => ''];
+        $bio = $data['bio'] ?? ['en' => '', 'ar' => ''];
+
+        // Prepare data - use spatie/laravel-translatable format
         $doctorData = [
             'license_number' => $data['license_number'],
             'phone' => $data['phone'] ?? null,
+            'available_from' => $data['available_from'] ?? '09:00:00',
+            'available_to' => $data['available_to'] ?? '17:00:00',
+            // These will be automatically cast to JSON by the HasTranslations trait
+            'specialization' => $specialization,
+            'department' => $department,
+            'bio' => $bio,
         ];
-
-        // Add translatable fields (spatie/laravel-translatable handles JSON conversion)
-        if (isset($data['specialization'])) {
-            $doctorData['specialization_translatable'] = $data['specialization'];
-        }
-        if (isset($data['department'])) {
-            $doctorData['department_translatable'] = $data['department'];
-        }
-        if (isset($data['bio'])) {
-            $doctorData['bio_translatable'] = $data['bio'];
-        }
 
         $user->doctor()->create($doctorData);
 

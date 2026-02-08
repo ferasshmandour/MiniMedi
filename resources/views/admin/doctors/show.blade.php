@@ -42,6 +42,26 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-6">
+                <x-input name="available_from"
+                    label="{{ trans('messages.from') }} {{ trans('messages.general') }} {{ trans('messages.date') }}"
+                    :value="$doctor->doctor->available_from ?? '09:00'" disabled />
+            </div>
+            <div class="col-md-6">
+                <x-input name="available_to"
+                    label="{{ trans('messages.to') }} {{ trans('messages.general') }} {{ trans('messages.date') }}"
+                    :value="$doctor->doctor->available_to ?? '17:00'" disabled />
+            </div>
+        </div>
+
+        @if ($doctor->doctor->bio)
+            <div class="mb-3">
+                <label class="form-label">{{ trans('messages.general') }} Bio</label>
+                <textarea class="form-control" disabled rows="4">{{ $doctor->doctor->bio }}</textarea>
+            </div>
+        @endif
+
         <!-- Assigned Roles -->
         <div class="mt-4">
             <h5><i class="bi bi-shield-check me-2"></i>{{ trans('messages.assigned_roles') }}</h5>

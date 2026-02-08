@@ -48,14 +48,18 @@
         @slot('title')
             <i class="bi bi-exclamation-triangle me-2"></i>{{ trans('messages.allergies') }}
         @endslot
-        <p class="mb-0">{{ $patient->patient->allergies ?? trans('messages.none_known') }}</p>
+        <p class="mb-0">
+            {{ $patient->patient->allergies ?? ($patient->patient->allergies_translatable[app()->getLocale()] ?? trans('messages.none_known')) }}
+        </p>
     </x-card>
 
     <x-card class="mt-4">
         @slot('title')
             <i class="bi bi-file-medical me-2"></i>{{ trans('messages.medical_history') }}
         @endslot
-        <p class="mb-0">{{ $patient->patient->medical_history ?? trans('messages.no_medical_history') }}</p>
+        <p class="mb-0">
+            {{ $patient->patient->medical_history ?? ($patient->patient->medical_history_translatable[app()->getLocale()] ?? trans('messages.no_medical_history')) }}
+        </p>
     </x-card>
 
     <div class="mt-4">

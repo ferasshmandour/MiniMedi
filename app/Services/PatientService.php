@@ -28,21 +28,20 @@ class PatientService
             'role' => 'patient',
         ]);
 
-        // Prepare patient data
+        // Handle translatable fields - they come as arrays from the form
+        $allergies = $data['allergies'] ?? ['en' => '', 'ar' => ''];
+        $medical_history = $data['medical_history'] ?? ['en' => '', 'ar' => ''];
+
+        // Prepare patient data - use spatie/laravel-translatable format
         $patientData = [
             'phone' => $data['phone'] ?? null,
             'address' => $data['address'] ?? null,
             'date_of_birth' => $data['date_of_birth'] ?? null,
             'blood_type' => $data['blood_type'] ?? null,
+            // These will be automatically cast to JSON by the HasTranslations trait
+            'allergies' => $allergies,
+            'medical_history' => $medical_history,
         ];
-
-        // Add translatable fields (spatie/laravel-translatable handles JSON conversion)
-        if (isset($data['allergies'])) {
-            $patientData['allergies_translatable'] = $data['allergies'];
-        }
-        if (isset($data['medical_history'])) {
-            $patientData['medical_history_translatable'] = $data['medical_history'];
-        }
 
         $user->patient()->create($patientData);
 

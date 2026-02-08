@@ -51,13 +51,20 @@ class WebAppointmentService
             ->where('role', 'doctor')
             ->firstOrFail();
 
-        $appointment = Appointment::create([
+        // Handle translatable fields - they come as arrays from the form
+        $reason = $data['reason'] ?? ['en' => '', 'ar' => ''];
+
+        // Prepare data - use spatie/laravel-translatable format
+        $appointmentData = [
             'patient_id' => Auth::id(),
             'doctor_id' => $data['doctor_id'],
             'appointment_date' => $data['appointment_date'],
-            'reason' => $data['reason'],
             'status' => 'pending',
-        ]);
+            // This will be automatically cast to JSON by the HasTranslations trait
+            'reason' => $reason,
+        ];
+
+        Appointment::create($appointmentData);
 
         return redirect()->route('patient.appointments.index')->with('success', 'Appointment booked successfully!');
     }

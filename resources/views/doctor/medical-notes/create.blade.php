@@ -30,28 +30,66 @@
                 </x-alert>
             @endif
 
-            <div class="mb-3">
-                <label for="symptoms" class="form-label">{{ trans('messages.symptoms') }}</label>
-                <textarea name="symptoms" id="symptoms" class="form-control" placeholder="{{ trans('messages.describe_symptoms') }}"
-                    rows="3"></textarea>
-            </div>
+            <!-- Translatable Fields Tabs -->
+            <ul class="nav nav-tabs mb-3" role="tablist">
+                <li class="nav-item">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#en-tab" type="button">
+                        <i class="bi bi-translate me-1"></i>English
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#ar-tab" type="button">
+                        <i class="bi bi-translate me-1"></i>العربية
+                    </button>
+                </li>
+            </ul>
 
-            <div class="mb-3">
-                <label for="diagnosis" class="form-label">{{ trans('messages.diagnosis') }}</label>
-                <textarea name="diagnosis" id="diagnosis" class="form-control" placeholder="{{ trans('messages.enter_diagnosis') }}"
-                    rows="3"></textarea>
-            </div>
+            <div class="tab-content">
+                <!-- English Tab -->
+                <div class="tab-pane fade show active" id="en-tab">
+                    <div class="mb-3">
+                        <label for="symptoms_en" class="form-label">{{ trans('messages.symptoms_en') }}</label>
+                        <textarea name="symptoms[en]" id="symptoms_en" class="form-control"
+                            placeholder="{{ trans('messages.describe_symptoms') }}" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="diagnosis_en" class="form-label">{{ trans('messages.diagnosis_en') }}</label>
+                        <textarea name="diagnosis[en]" id="diagnosis_en" class="form-control"
+                            placeholder="{{ trans('messages.enter_diagnosis') }}" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="prescription_en" class="form-label">{{ trans('messages.prescription_en') }}</label>
+                        <textarea name="prescription[en]" id="prescription_en" class="form-control"
+                            placeholder="{{ trans('messages.enter_medications') }}" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="treatment_plan_en" class="form-label">{{ trans('messages.treatment_plan_en') }}</label>
+                        <textarea name="treatment_plan[en]" id="treatment_plan_en" class="form-control"
+                            placeholder="{{ trans('messages.enter_treatment_plan') }}" rows="3"></textarea>
+                    </div>
+                </div>
 
-            <div class="mb-3">
-                <label for="prescription" class="form-label">{{ trans('messages.prescription') }}</label>
-                <textarea name="prescription" id="prescription" class="form-control"
-                    placeholder="{{ trans('messages.enter_medications') }}" rows="3"></textarea>
-            </div>
-
-            <div class="mb-3">
-                <label for="treatment_plan" class="form-label">{{ trans('messages.treatment_plan') }}</label>
-                <textarea name="treatment_plan" id="treatment_plan" class="form-control"
-                    placeholder="{{ trans('messages.enter_treatment_plan') }}" rows="3"></textarea>
+                <!-- Arabic Tab -->
+                <div class="tab-pane fade" id="ar-tab">
+                    <div class="mb-3">
+                        <label for="symptoms_ar" class="form-label">{{ trans('messages.symptoms_ar') }}</label>
+                        <textarea name="symptoms[ar]" id="symptoms_ar" class="form-control" placeholder="أعراض المريض..." rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="diagnosis_ar" class="form-label">{{ trans('messages.diagnosis_ar') }}</label>
+                        <textarea name="diagnosis[ar]" id="diagnosis_ar" class="form-control" placeholder="التشخيص الطبي..." rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="prescription_ar" class="form-label">{{ trans('messages.prescription_ar') }}</label>
+                        <textarea name="prescription[ar]" id="prescription_ar" class="form-control" placeholder="الأدوية الموصوفة..."
+                            rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="treatment_plan_ar" class="form-label">{{ trans('messages.treatment_plan_ar') }}</label>
+                        <textarea name="treatment_plan[ar]" id="treatment_plan_ar" class="form-control" placeholder="خطة العلاج..."
+                            rows="3"></textarea>
+                    </div>
+                </div>
             </div>
 
             <div class="mb-3">

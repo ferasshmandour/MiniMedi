@@ -257,6 +257,8 @@ return [
     // Additional
     'select' => 'Select',
     'general' => 'General',
+    'from' => 'From',
+    'to' => 'To',
     'no_doctors' => 'No Doctors Available',
     'no_doctors_message' => 'There are no doctors registered in the system yet.',
     'quick_actions' => 'Quick Actions',

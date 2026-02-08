@@ -33,28 +33,24 @@ class MedicalNoteService
             abort(403, 'Unauthorized');
         }
 
-        // Prepare medical note data
+        // Handle translatable fields - they come as arrays from the form
+        $diagnosis = $data['diagnosis'] ?? ['en' => '', 'ar' => ''];
+        $prescription = $data['prescription'] ?? ['en' => '', 'ar' => ''];
+        $treatment_plan = $data['treatment_plan'] ?? ['en' => '', 'ar' => ''];
+        $symptoms = $data['symptoms'] ?? ['en' => '', 'ar' => ''];
+        $vital_signs = $data['vital_signs'] ?? null;
+
+        // Prepare medical note data - use spatie/laravel-translatable format
         $noteData = [
             'appointment_id' => $data['appointment_id'],
             'doctor_id' => Auth::id(),
+            // These will be automatically cast to JSON by the HasTranslations trait
+            'diagnosis' => $diagnosis,
+            'prescription' => $prescription,
+            'treatment_plan' => $treatment_plan,
+            'symptoms' => $symptoms,
+            'vital_signs' => $vital_signs,
         ];
-
-        // Add translatable fields (spatie/laravel-translatable handles JSON conversion)
-        if (isset($data['diagnosis'])) {
-            $noteData['diagnosis_translatable'] = $data['diagnosis'];
-        }
-        if (isset($data['prescription'])) {
-            $noteData['prescription_translatable'] = $data['prescription'];
-        }
-        if (isset($data['treatment_plan'])) {
-            $noteData['treatment_plan_translatable'] = $data['treatment_plan'];
-        }
-        if (isset($data['symptoms'])) {
-            $noteData['symptoms_translatable'] = $data['symptoms'];
-        }
-        if (isset($data['vital_signs'])) {
-            $noteData['vital_signs_translatable'] = $data['vital_signs'];
-        }
 
         MedicalNote::create($noteData);
 

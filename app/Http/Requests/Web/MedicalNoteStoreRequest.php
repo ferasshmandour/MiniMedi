@@ -25,6 +25,7 @@ class MedicalNoteStoreRequest extends FormRequest
 
         $rules = [
             'appointment_id' => 'required|exists:appointments,id',
+            'vital_signs' => 'nullable|string',
         ];
 
         // Add translatable field rules for each locale
@@ -33,7 +34,6 @@ class MedicalNoteStoreRequest extends FormRequest
             $rules["prescription.{$locale}"] = 'nullable|string';
             $rules["treatment_plan.{$locale}"] = 'nullable|string';
             $rules["symptoms.{$locale}"] = 'nullable|string';
-            $rules["vital_signs.{$locale}"] = 'nullable|string';
         }
 
         return $rules;

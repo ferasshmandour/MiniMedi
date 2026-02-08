@@ -30,6 +30,8 @@ class DoctorStoreRequest extends FormRequest
             'password' => 'required|min:8|confirmed',
             'license_number' => 'required|string|unique:doctors',
             'phone' => 'nullable|string|max:20',
+            'available_from' => 'nullable',
+            'available_to' => 'nullable',
         ];
 
         // Add translatable field rules for each locale
@@ -58,12 +60,6 @@ class DoctorStoreRequest extends FormRequest
             'license_number.required' => __('validation.required'),
             'license_number.unique' => __('validation.unique'),
         ];
-
-        // Add locale-specific messages
-        foreach (['en', 'ar'] as $locale) {
-            $messages["specialization.{$locale}.max"] = __('validation.max', ['max' => 255]);
-            $messages["department.{$locale}.max"] = __('validation.max', ['max' => 100]);
-        }
 
         return $messages;
     }

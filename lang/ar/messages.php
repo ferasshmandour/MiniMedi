@@ -256,6 +256,8 @@ return [
     // Additional
     'select' => 'اختيار',
     'general' => 'عام',
+    'from' => 'من',
+    'to' => 'إلى',
     'no_doctors' => 'لا يوجد أطباء متاحون',
     'no_doctors_message' => 'لا يوجد أطباء مسجلون في النظام حتى الآن.',
     'quick_actions' => 'الإجراءات السريعة',

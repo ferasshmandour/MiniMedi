@@ -28,9 +28,9 @@ class PatientStoreRequest extends FormRequest
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8|confirmed',
             'phone' => 'nullable|string|max:20',
-            'address' => 'nullable|string',
             'date_of_birth' => 'nullable|date',
-            'blood_type' => 'nullable|string|max:5',
+            'blood_type' => 'nullable|string',
+            'address' => 'nullable|string',
         ];
 
         // Add translatable field rules for each locale
@@ -55,7 +55,6 @@ class PatientStoreRequest extends FormRequest
             'password.required' => __('validation.required'),
             'password.min' => __('validation.min'),
             'password.confirmed' => __('validation.confirmed'),
-            'date_of_birth.date' => __('validation.date'),
         ];
     }
 }

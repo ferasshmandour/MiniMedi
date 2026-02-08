@@ -36,9 +36,6 @@
                     </tbody>
                 </table>
             </div>
-            <div class="mt-3">
-                {{ $notes->links() }}
-            </div>
         @else
             <div class="empty-state">
                 <i class="bi bi-file-text"></i>
