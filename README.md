@@ -265,14 +265,3 @@ php artisan view:cache
 php artisan optimize
 ```
 
-## 📝 License
-
-This project is open-sourced software licensed under the MIT license.
-
-## 🤝 Contributing
-
-For learning purposes, feel free to fork and enhance this project!
-
-## 📧 Support
-
-For questions or issues, please open a GitHub issue.
