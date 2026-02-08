@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', [\App\Http\Controllers\Web\AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [\App\Http\Controllers\Web\AuthController::class, 'login']);
 
-// Dashboard home - Shows patients list for admin
-Route::get('/dashboard', [\App\Http\Controllers\Web\DashboardController::class, 'index'])->name('dashboard');
-
 // Protected routes
 Route::middleware(['auth'])->group(function () {
+    // Dashboard home - Shows patients list for admin (inside auth middleware)
+    Route::get('/dashboard', [\App\Http\Controllers\Web\DashboardController::class, 'index'])->name('dashboard');
+
     // Logout (support both GET and POST for convenience)
     Route::post('/logout', [\App\Http\Controllers\Web\AuthController::class, 'logout'])->name('logout');
     Route::get('/logout', [\App\Http\Controllers\Web\AuthController::class, 'logout'])->name('logout.get');

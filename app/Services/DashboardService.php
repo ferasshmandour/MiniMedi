@@ -15,6 +15,10 @@ class DashboardService
     {
         $user = Auth::user();
 
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
         if ($user->isAdmin()) {
             return [
                 'role' => 'admin',

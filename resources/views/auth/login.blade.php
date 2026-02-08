@@ -29,7 +29,6 @@
         .login-header {
             text-align: center;
             padding: 2rem 2rem 1rem;
-            border-bottom: 1px solid #e9ecef;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
         }
@@ -58,7 +57,6 @@
             padding: 0.75rem 1rem;
             border-radius: 0.5rem;
             border: 1px solid #ced4da;
-            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .form-control:focus {
@@ -72,13 +70,11 @@
             font-weight: 600;
             padding: 0.75rem;
             border-radius: 0.5rem;
-            transition: all 0.3s;
             color: white;
+            width: 100%;
         }
 
         .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
             background: linear-gradient(135deg, #5a6fd6 0%, #6a4190 100%);
             color: white;
         }
@@ -152,7 +148,7 @@
                         placeholder="{{ trans('messages.enter_password') }}">
                 </div>
 
-                <button type="submit" class="btn btn-login w-100">
+                <button type="submit" class="btn btn-login">
                     <i class="bi bi-box-arrow-in-right me-2"></i>{{ trans('messages.login') }}
                 </button>
             </form>

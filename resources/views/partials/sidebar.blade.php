@@ -2,18 +2,20 @@
     <div class="position-sticky pt-3">
         <a href="{{ route('dashboard') }}"
             class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none fs-4 px-3">
-            🏥 MiniMedi
+            <i class="bi bi-hospital me-2"></i>
+            MiniMedi
         </a>
         <hr class="text-secondary">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+                <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"
+                    href="{{ route('dashboard') }}">
                     <i class="bi bi-speedometer2 me-2"></i>
                     {{ trans('messages.dashboard') }}
                 </a>
             </li>
             @auth
-                @if (auth()->user()->isAdmin())
+                @if (auth()->user() && auth()->user()->isAdmin())
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('admin.doctors.*') ? 'active' : '' }}"
                             href="{{ route('admin.doctors.index') }}">
@@ -42,7 +44,7 @@
                             {{ trans('messages.permissions') }}
                         </a>
                     </li>
-                @elseif(auth()->user()->isDoctor())
+                @elseif(auth()->user() && auth()->user()->isDoctor())
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('doctor.appointments.*') ? 'active' : '' }}"
                             href="{{ route('doctor.appointments.index') }}">
@@ -79,11 +81,13 @@
         <div class="px-3">
             @if (session('locale', 'en') == 'en')
                 <a href="{{ route('language', 'ar') }}" class="btn btn-outline-light w-100 btn-sm">
-                    🇸🇦 العربية
+                    <i class="bi bi-translate me-1"></i>
+                    العربية
                 </a>
             @else
                 <a href="{{ route('language', 'en') }}" class="btn btn-outline-light w-100 btn-sm">
-                    🇺🇸 English
+                    <i class="bi bi-translate me-1"></i>
+                    English
                 </a>
             @endif
         </div>
